@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+
+* {
+	box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+	font-family: 'Lato', sans-serif;
+    font-size: 14px;
+	background: #fff url(../img/body.png) no-repeat center center;
+}
+.wrapper {
+	margin: 0 auto;
+	height: calc(100vh - 80px);
+    overflow: overlay;
+}
+.chat {
+	padding-top: 10px;
+	
+	&__messages {
+		margin: 0 auto;
+		max-width: 640px;
+		padding: 0 24px;
+
+		&::after {
+			display: table;
+			content: '';
+			clear: both;
+		}
+	}
+	.message {
+		&__name,
+		&__timestamp {
+			color: #bbb;
+		}
+		&__text {
+			
+		}
+		
+	}
+	&__message {
+		border: 1px solid #e2e2e2;
+		margin-bottom: 16px;
+		max-width: 420px;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+		
+		&--received {
+			background: #fff;
+			padding: 16px;
+			float: left;
+			clear: both;
+
+			.message {
+				&__name,
+				&__text {
+					padding-bottom: 5px;
+				}
+				&__timestamp {
+					
+				}
+			}
+		}
+		&--sent {
+			background: #fcf6c5;
+			padding: 16px 16px 6px;
+			float: right;
+			clear: both;
+
+			.message {
+				&__text {
+					
+				}
+				&__timestamp {
+					text-align: right;
+					padding-top: 10px;
+				}
+			}
+		}
+	}
+	
+	&__form {
+		background: #3898d4;
+	    position: fixed;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    z-index: 99;
+		    	
+    	form {
+    		max-width: 640px;
+    		padding: 8px 24px;
+			margin: 0 auto;
+    		@include flexbox();
+    		@include justify-content(center);
+    		@include align-items(center);
+    	}
+		input[type=text] {
+			font-family: 'Lato', sans-serif;
+			font-size: 15px;
+		    font-weight: 300;
+			width: 80%;
+		    margin-right: 8px;
+		    padding: 12px 15px;
+		    border-radius: 3px;
+		    border: 2px solid #1b89d8;
+		}
+		input[type=submit]{
+			font-family: 'Lato', sans-serif;
+			font-size: 16px;
+		    font-weight: 700;
+		    background: #ff876e;
+		    color: #fff;
+		    width: 20%;
+		    padding: 10px 15px;
+		    border-radius: 3px;
+		    border: 2px solid #ff876e;
+		    cursor: pointer;
+		    outline: none;
+
+		    &:hover {
+				background: #fd5e3d;
+				border: 2px solid #ff5430;
+				transition: all .3s ease-out;
+		    }
+		}
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.chat {
+		&__message {
+			&--received {
+			}
+			&--sent {
+			}
+		}
+	}
+}
+@media screen and (max-width: 480px) {
+	.chat {
+		&__form {
+			form {
+				padding: 8px;
+			}
+			input[type=text] {
+				width: 72%;
+			}
+			input[type=submit] {
+				width: 28%;
+			}
+		}
+		&__message {
+			&--received,
+			&--sent {
+				max-width: 240px;
+			}
+		}
+	}
+}
