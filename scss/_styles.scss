@@ -9,14 +9,15 @@ body {
 	font-family: 'Lato', sans-serif;
     font-size: 14px;
 	background: #fff url(../img/body.png) no-repeat center center;
+	background-size: cover;
 }
 .wrapper {
 	margin: 0 auto;
-	height: calc(100vh - 80px);
+	height: calc(100vh - 60px);
     overflow: overlay;
 }
 .chat {
-	padding-top: 10px;
+	padding: 20px 0;
 	
 	&__messages {
 		margin: 0 auto;
@@ -76,7 +77,7 @@ body {
 				}
 				&__timestamp {
 					text-align: right;
-					padding-top: 10px;
+					padding-top: 8px;
 				}
 			}
 		}

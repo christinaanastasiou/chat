@@ -7,15 +7,16 @@
 body {
   font-family: 'Lato', sans-serif;
   font-size: 14px;
-  background: #fff url(../img/body.png) no-repeat center center; }
+  background: #fff url(../img/body.png) no-repeat center center;
+  background-size: cover; }
 
 .wrapper {
   margin: 0 auto;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 60px);
   overflow: overlay; }
 
 .chat {
-  padding-top: 10px; }
+  padding: 20px 0; }
   .chat__messages {
     margin: 0 auto;
     max-width: 640px;
@@ -46,7 +47,7 @@ body {
       clear: both; }
       .chat__message--sent .message__timestamp {
         text-align: right;
-        padding-top: 10px; }
+        padding-top: 8px; }
   .chat__form {
     background: #3898d4;
     position: fixed;
