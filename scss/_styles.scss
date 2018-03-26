@@ -14,7 +14,8 @@ body {
 .wrapper {
 	margin: 0 auto;
 	height: calc(100vh - 60px);
-    overflow: overlay;
+    //overflow: overlay; // does not work on FF
+    overflow: auto;
 }
 .chat {
 	padding: 20px 0;
@@ -106,7 +107,7 @@ body {
 			width: 80%;
 		    margin-right: 8px;
 		    padding: 12px 15px;
-		    border-radius: 3px;
+		    @include border-radius(3px);
 		    border: 2px solid #1b89d8;
 		}
 		input[type=submit]{
@@ -117,7 +118,7 @@ body {
 		    color: #fff;
 		    width: 20%;
 		    padding: 10px 15px;
-		    border-radius: 3px;
+		    @include border-radius(3px);
 		    border: 2px solid #ff876e;
 		    cursor: pointer;
 		    outline: none;
@@ -126,21 +127,12 @@ body {
 				background: #fd5e3d;
 				border: 2px solid #ff5430;
 				transition: all .3s ease-out;
+				@include transition(all, .3s, ease-out)
 		    }
 		}
 	}
 }
 
-@media screen and (max-width: 640px) {
-	.chat {
-		&__message {
-			&--received {
-			}
-			&--sent {
-			}
-		}
-	}
-}
 @media screen and (max-width: 480px) {
 	.chat {
 		&__form {

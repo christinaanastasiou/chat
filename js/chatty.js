@@ -34,7 +34,7 @@ var Chatty = {
 		    url: endpoint, 
 		    data: JSON.stringify(json),
 		    dataType: 'json',
-		    contentType: 'application/json',
+		    contentType: 'application/json; charset=utf-8',
 		    headers: { 'token': Chatty.token },
 		    success: successHandler
 		});

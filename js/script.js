@@ -12,15 +12,17 @@ var ChatUI = {
 
 		// Send message on form submit
 		$('form').submit(function(event) {
-			var text = $('input[type=text]').val();
-			Chatty.sendMessage(text, author, function() {
+			event.preventDefault();
+			var input = $('input[type=text]');
+			var text = input.val();
+			Chatty.sendMessage(text, ChatUI.author, function() {
+				input.val('');
 				console.log('Message sent');
 			});
-			event.preventDefault();
 		});
 
-		// Fetch messages and add them to the DOM every 5s
-		setInterval(this.getMessages, 5000);
+		// Fetch messages and add them to the DOM every 2s
+		setInterval(this.getMessages, 2000);
 	},
 
 	getMessages: function() {
@@ -43,7 +45,11 @@ var ChatUI = {
 	addMessages: function(messages) {
 		if (messages.length > 0) {
 			messages.forEach(ChatUI.addMessage);
+			// Get the timestamp of the last message
 			ChatUI.latestTimestamp = messages[messages.length-1].timestamp;
+			// Scroll to the bottom
+			var scrollable = $(".wrapper");
+			scrollable.animate({ scrollTop: scrollable.height() }, 600);
 		}
 	},
 
@@ -52,10 +58,12 @@ var ChatUI = {
 		var isMine = json.author == ChatUI.author;
 		// Use moment.js to format the timestamp
 		var timestamp = moment(new Date(json.timestamp)).format("DD MMM YYYY HH:mm");
+		// Extract plain text out of HTML-encoded string
+		var text = $('<span></span>').html(json.message).text();
 		var messageHtml =
 			'<div class="chat__message '+ (isMine ? 'chat__message--sent' : 'chat__message--received') +' message">' +
 				'<div class="message__name">'+ json.author +'</div>' +
-				'<div class="message__text">'+ json.message +'</div>' +
+				'<div class="message__text">'+ text +'</div>' +
 				'<div class="message__timestamp">'+ timestamp +'</div>' +
 			'</div>';
 		ChatUI.chat.append(messageHtml);

@@ -13,7 +13,7 @@ body {
 .wrapper {
   margin: 0 auto;
   height: calc(100vh - 60px);
-  overflow: overlay; }
+  overflow: auto; }
 
 .chat {
   padding: 20px 0; }
@@ -81,6 +81,8 @@ body {
       margin-right: 8px;
       padding: 12px 15px;
       border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
       border: 2px solid #1b89d8; }
     .chat__form input[type=submit] {
       font-family: 'Lato', sans-serif;
@@ -91,13 +93,18 @@ body {
       width: 20%;
       padding: 10px 15px;
       border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
       border: 2px solid #ff876e;
       cursor: pointer;
       outline: none; }
       .chat__form input[type=submit]:hover {
         background: #fd5e3d;
         border: 2px solid #ff5430;
-        transition: all .3s ease-out; }
+        transition: all .3s ease-out;
+        transition: all 0.3s ease-out;
+        -webkit-transition: all 0.3s ease-out;
+        -moz-transition: all 0.3s ease-out; }
 
 @media screen and (max-width: 480px) {
   .chat__form form {
