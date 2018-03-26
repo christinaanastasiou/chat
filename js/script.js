@@ -26,6 +26,7 @@ var ChatUI = {
 	},
 
 	getMessages: function() {
+		// Avoid fetching the message while another fetch is in progress
 		if (ChatUI.fetching) return;
 		ChatUI.fetching = true;
 				
@@ -58,7 +59,7 @@ var ChatUI = {
 		var isMine = json.author == ChatUI.author;
 		// Use moment.js to format the timestamp
 		var timestamp = moment(new Date(json.timestamp)).format("DD MMM YYYY HH:mm");
-		// Extract plain text out of HTML-encoded string
+		// Extract plain text out of HTML escape code
 		var text = $('<span></span>').html(json.message).text();
 		var messageHtml =
 			'<div class="chat__message '+ (isMine ? 'chat__message--sent' : 'chat__message--received') +' message">' +
